@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuento: El mundo se rompió</title>
+    
+    <!-- Fuente Roboto Serif desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Librería PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <!-- Librería PageFlip -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+</head>
+<body>
+
+    <!-- Audio de fondo relajante -->
+    <audio id="bg-music" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=relaxing-light-background-116185.mp3"></audio>
+
+    <header class="header">
+        <!-- Recuadro para opinión escrita con botón de envío por email -->
+        <div class="feedback-container">
+            <label for="feedback-text"><strong>💬 Déjanos tu opinión:</strong></label>
+            <textarea id="feedback-text" rows="3" placeholder="Escribe tu comentario sobre el cuento..."></textarea>
+            <div class="feedback-actions">
+                <span class="word-counter"><span id="word-count">0</span> / 250 palabras</span>
+                <button id="btn-send-feedback" class="btn btn-send">✉️ Enviar</button>
+            </div>
+        </div>
+
+        <h1>El mundo se rompió</h1>
+        
+        <!-- Panel de Controles -->
+        <div class="controls-container">
+            <button id="btn-prev" class="btn" aria-label="Página anterior">◀ Anterior</button>
+            <button id="btn-next" class="btn" aria-label="Página siguiente">Siguiente ▶</button>
+
+            <span class="separator">|</span>
+
+            <button id="btn-tts" class="btn btn-accessibility" aria-label="Lectura en voz alta">🔊 Leer en Voz Alta</button>
+            <button id="btn-music" class="btn btn-accessibility" aria-label="Música de fondo">🎵 Música: On</button>
+            <button id="btn-zoom-in" class="btn btn-accessibility" aria-label="Agrandar vista">A+</button>
+            <button id="btn-zoom-out" class="btn btn-accessibility" aria-label="Achicar vista">A-</button>
+            
+            <span class="separator">|</span>
+
+            <!-- Botón de Descarga -->
+            <a id="btn-download" class="btn btn-download" href="./Elmundoserompi%C3%B3.pdf" download="Elmundoserompio.pdf" aria-label="Descargar cuento">📥 Descargar Cuento</a>
+        </div>
+
+        <!-- Sistema de Calificación con 5 Estrellas -->
+        <div class="rating-container" aria-label="Puntuar cuento">
+            <span>Puntúa este cuento:</span>
+            <div class="stars" id="star-rating">
+                <span data-value="1" class="star">&#9733;</span>
+                <span data-value="2" class="star">&#9733;</span>
+                <span data-value="3" class="star">&#9733;</span>
+                <span data-value="4" class="star">&#9733;</span>
+                <span data-value="5" class="star">&#9733;</span>
+            </div>
+            <span id="rating-message" class="rating-message"></span>
+        </div>
+
+        <div id="page-info" class="page-info">Página 0 de 0</div>
+        <div id="loading">Cargando cuento...</div>
+    </header>
+
+    <main class="book-container">
+        <div id="flip-book" class="flip-book"></div>
+        
+        <!-- Contenedor para la flor al llegar a la página final -->
+        <div id="final-flower-container" class="final-flower-container" style="display: none;">
+            <div class="flower">🌸</div>
+            <p class="flower-text">¡Gracias por leer este cuento!</p>
+            <button id="btn-restart" class="btn">Volver a leer</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
